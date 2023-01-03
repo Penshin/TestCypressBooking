@@ -32,9 +32,12 @@ jobs:
       run: |
         echo '${{ secrets.CYPRESS_ENV_CI }}' > cypress.env.json
 
-    - name: Npx run
+    - name: Cypress run
       run: npx cypress run --headless
-
+        env:
+          CYPRESS_login: ${{secrets.CYPRESS_LOGIN}}
+          CYPRESS_password: ${{secrets.CYPRESS_PASSWORD}}
+      
     - name: Create test summary
       uses: test-summary/action@v1.0
       if: always()
