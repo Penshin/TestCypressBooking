@@ -48,7 +48,7 @@ jobs:
 
     - name: Artifacts
       uses: actions/upload-artifact@v2
-      if: failure()
+      if: always()
       with:
         name: cypress-screenshots
         path: ./cypress/screenshots
