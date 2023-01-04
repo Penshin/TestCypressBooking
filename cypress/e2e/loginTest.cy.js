@@ -12,10 +12,10 @@ describe('Verify Register account and login', () => {
         // cy.get('div > a:nth-child(5)')
         // .should('be.visible')
         // .should('have.text', 'Register account now');
-        // cy.wrap(Cypress.env('manager'))
+        // cy.wrap(Cypress.env('login'))
         //     .should('have.key', 'manager')
-        // cy.log('**login:** ' + Cypress.env.login)
-        // cy.log('**password:** ' + Cypress.env.password)
+        // cy.log('**login:** ' + Cypress.env().login)
+        // cy.log('**password:** ' + Cypress.env().password)
 
         // save a screenshot of the test runner
         // to show what the env values were

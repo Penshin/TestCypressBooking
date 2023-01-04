@@ -26,14 +26,13 @@ jobs:
     - name: Npm install
       run: npm ci
 
-   #- name: Write the cypress.env.json file 📝
-     # use quotes around the secret, as its value
-     # is simply inserted as a string into the command
-    #  run: |
-     #   echo '${{ secrets.CYPRESS_ENV_CI }}' > cypress.env.json
+    - name: Write the cypress.env.json
+      run: |
+        echo '${{ secrets.CYPRESS_ENV_CI }}' > ./cypress.env.json
 
     - name: Npx run
-      run: npx cypress run --headless
+      run: npx cypress run --config baseUrl="https://ci.qatest.site" # --env login=${{ secrets.CYPRESS_LOGIN }} password=${{ secrets.CYPRESS_PASSWORD }}
+
 
     - name: Create test summary
       uses: test-summary/action@v1.0
@@ -49,7 +48,7 @@ jobs:
 
     - name: Artifacts
       uses: actions/upload-artifact@v2
-      if: failure()
+      if: always()
       with:
         name: cypress-screenshots
         path: ./cypress/screenshots
